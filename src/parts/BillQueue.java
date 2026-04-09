@@ -28,7 +28,7 @@ public class BillQueue {
             System.out.println("Bill queue is empty.");
             return;
         }
-        System.out.println("\nPending Bills:");
+        System.out.println("Pending Bills:");
         int index = 1;
         for (String bill : queue) {
             System.out.println(index + ". " + bill);

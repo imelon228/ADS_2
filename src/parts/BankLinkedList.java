@@ -12,7 +12,7 @@ public class BankLinkedList {
     }
 
     public void addAccount(BankAccount account) {
-        Node newNode = new Node(account);   // wrap account inside a Node
+        Node newNode = new Node(account);   // put account inside a Node
 
         // Case 1: list is empty — new node becomes the head
         if (head == null) {
@@ -37,12 +37,12 @@ public class BankLinkedList {
             return;
         }
 
-        System.out.println("\nAccounts List:");
+        System.out.println("Accounts List:");
         Node current = head;
         int  index   = 1;
 
         while (current != null) {            // walk until the end (null)
-            System.out.println(current.account);
+            System.out.println(index + ". " + current.account);
             current = current.next;          // move to next node
             index++;
         }
@@ -66,8 +66,8 @@ public class BankLinkedList {
             return;
         }
         account.setBalance(account.getBalance() + amount);
-        System.out.println("Deposit: "      + amount);
-        System.out.println("New balance: "  + account.getBalance());
+        System.out.println("Deposit: " + amount);
+        System.out.println("New balance: " + account.getBalance());
     }
 
 

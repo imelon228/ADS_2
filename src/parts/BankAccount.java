@@ -19,7 +19,7 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return accountNumber + ". " + username + " - Balance: " + balance;
+        return username + " - Balance: " + balance;
     }
 
 

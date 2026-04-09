@@ -33,7 +33,8 @@ class Main {
             System.out.println("4. Display all accounts");
             System.out.println("5. Search account by username");
             System.out.println("6. View transaction history");
-            System.out.println("7. Undo last transaction");
+            System.out.println("7. Show last transaction");
+            System.out.println("8. Undo last transaction");
             System.out.println("0. Back to Main Menu");
             System.out.print("Choose: ");
             choice = readInt();
@@ -43,36 +44,50 @@ class Main {
                     System.out.print("Enter username: ");
                     String uname = scanner.nextLine();
                     System.out.print("Enter initial balance: ");
-                    double bal = scanner.nextDouble(); scanner.nextLine();
+                    double bal = scanner.nextDouble();
+                    scanner.nextLine();
+
                     requestQueue.submitRequest(uname, bal);
                 }
+
                 case 2 -> {
                     System.out.print("Enter username: ");
                     String uname = scanner.nextLine();
                     System.out.print("Enter deposit amount: ");
-                    double amount = scanner.nextDouble(); scanner.nextLine();
+                    double amount = scanner.nextDouble();
+                    scanner.nextLine();
+
                     accounts.deposit(uname, amount);
                     history.addTransaction("Deposit " + amount + " to " + uname);
                 }
+
                 case 3 -> {
                     System.out.print("Enter username: ");
                     String uname = scanner.nextLine();
                     System.out.print("Enter withdraw amount: ");
-                    double amount = scanner.nextDouble(); scanner.nextLine();
+                    double amount = scanner.nextDouble();
+                    scanner.nextLine();
+
                     accounts.withdraw(uname, amount);
                     history.addTransaction("Withdraw " + amount + " from " + uname);
                 }
                 case 4 -> accounts.displayAccounts();
+
                 case 5 -> {
                     System.out.print("Enter username to search: ");
                     String uname = scanner.nextLine();
                     BankAccount found = accounts.searchByUsername(uname);
                     if (found != null) System.out.println("Found: " + found);
-                    else               System.out.println("Account not found.");
+                    else System.out.println("Account not found.");
                 }
                 case 6 -> history.displayHistory();
-                case 7 -> history.undoLastTransaction();
+
+                case 7 -> history.showLastTransaction();
+
+                case 8 -> history.undoLastTransaction();
+
                 case 0 -> System.out.println("Returning to main menu...");
+
                 default -> System.out.println("Invalid option.");
             }
         } while (choice != 0);
